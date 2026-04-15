@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>智轨哨卫 · 轨道安防双盾| 河北轨道运输职业技术学院</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        apple: {
+                            blue: '#0071E3',
+                            gray: '#86868B',
+                            darkgray: '#1D1D1F',
+                            lightgray: '#F5F5F7'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/css">
+        @layer utilities {
+            .text-balance {
+                text-wrap: balance;
+            }
+            .parallax {
+                background-attachment: fixed;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+            .fade-in {
+                opacity: 0;
+                transform: translateY(20px);
+                transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            }
+            .fade-in.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            .product-hover, .card-hover {
+                transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            }
+            .product-hover:hover, .card-hover:hover {
+                transform: scale(1.03);
+            }
+            .menu-open {
+                transform: translateX(0);
+            }
+            .menu-close {
+                transform: translateX(100%);
+            }
+        }
+    </style>
+</head>
+<body class="bg-white text-apple-darkgray font-sans antialiased">
+    <!-- 导航栏 -->
+    <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center">
+                    <span class="text-apple-darkgray text-xl font-semibold">智轨安联</span>
+                </div>
+                <!-- 桌面端导航 -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#hero" class="text-apple-darkgray hover:text-apple-blue transition">首页</a>
+                    <a href="#sentinel" class="text-apple-darkgray hover:text-apple-blue transition">哨兵节点</a>
+                    <a href="#bracelet" class="text-apple-darkgray hover:text-apple-blue transition">安随手环</a>
+                    <a href="#platform" class="text-apple-darkgray hover:text-apple-blue transition">软件平台</a>
+                    <a href="#video" class="text-apple-darkgray hover:text-apple-blue transition">产品演示</a>
+                    <a href="#system" class="text-apple-darkgray hover:text-apple-blue transition">系统优势</a>
+                    <a href="#future" class="text-apple-darkgray hover:text-apple-blue transition">未来规划</a>
+                </div>
+                <!-- 移动端汉堡菜单按钮 -->
+                <button id="menuBtn" class="md:hidden text-apple-darkgray text-2xl">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <!-- 移动端侧边导航 -->
+        <div id="mobileMenu" class="fixed top-0 right-0 w-3/4 h-full bg-white shadow-2xl z-50 menu-close transition-transform duration-300 md:hidden">
+            <div class="p-6 flex flex-col h-full">
+                <div class="flex justify-between items-center mb-10">
+                    <span class="text-xl font-semibold text-apple-darkgray">智轨安联</span>
+                    <button id="closeMenuBtn" class="text-2xl text-apple-darkgray">
+                        <i class="fa fa-times"></i>
+                    </button>
+                </div>
+                <div class="flex flex-col space-y-6">
+                    <a href="#hero" class="text-lg text-apple-darkgray hover:text-apple-blue transition py-2 menu-link">首页</a>
+                    <a href="#sentinel" class="text-lg text-apple-darkgray hover:text-apple-blue transition py-2 menu-link">哨兵节点</a>
+                    <a href="#bracelet" class="text-lg text-apple-darkgray hover:text-apple-blue transition py-2 menu-link">安随手环</a>
+                    <a href="#platform" class="text-lg text-apple-darkgray hover:text-apple-blue transition py-2 menu-link">软件平台</a>
+                    <a href="#video" class="text-lg text-apple-darkgray hover:text-apple-blue transition py-2 menu-link">产品演示</a>
+                    <a href="#system" class="text-lg text-apple-darkgray hover:text-apple-blue transition py-2 menu-link">系统优势</a>
+                    <a href="#future" class="text-lg text-apple-darkgray hover:text-apple-blue transition py-2 menu-link">未来规划</a>
+                </div>
+            </div>
+        </div>
+        <!-- 遮罩层 -->
+        <div id="mask" class="fixed inset-0 bg-black/50 z-40 hidden md:hidden"></div>
+    </nav>
+    <!-- 英雄区 -->
+    <section id="hero" class="h-screen flex flex-col items-center justify-center text-center relative overflow-hidden bg-apple-lightgray">
+        <div class="absolute inset-0 flex items-center justify-center z-0">
+            <img src="https://s41.ax1x.com/2026/04/15/perXkB8.jpg" alt="复兴号高铁" class="w-full h-full object-cover opacity-25">
+        </div>
+        <div class="z-10 px-4">
+            <h1 class="text-[clamp(3rem,8vw,6rem)] font-bold text-apple-darkgray mb-4 tracking-tight">
+                智轨哨卫 
+            </h1>
+            <h2 class="text-[clamp(2rem,6vw,4rem)] font-bold text-apple-blue mb-8 tracking-tight">
+                轨道安防双盾
+            </h2>
+            <p class="text-[clamp(1.2rem,3vw,1.8rem)] text-apple-gray max-w-3xl mx-auto mb-12 text-balance">
+                用科技筑牢轨上安全防线，守护每一位劳动者的生命安全
+            </p>
+            <p class="text-apple-gray text-lg">
+                河北轨道运输职业技术学院 · 智轨安联科创团队
+            </p>
+        </div>
+        <a href="#sentinel" class="absolute bottom-10 animate-bounce text-apple-blue">
+            <i class="fa fa-chevron-down text-2xl"></i>
+        </a>
+    </section>
+    <!-- 哨兵节点产品展示 -->
+    <section id="sentinel" class="py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20 fade-in">
+                <h2 class="text-[clamp(2.5rem,5vw,4rem)] font-bold text-apple-darkgray mb-6">
+                    哨兵节点
+                </h2>
+                <p class="text-[clamp(1.2rem,3vw,1.5rem)] text-apple-gray max-w-2xl mx-auto text-balance">
+                    以全域感知、极速响应、多重冗余为核心，打造铁路施工安全前置防线。以硬核科技构建全天候、高可靠、易部署的智能预警堡垒，为轨道作业筑起先于危险、稳如磐石的第一道安全屏障。
+                </p>
+            </div>
+            <!-- 主产品3D展示区 -->
+            <div class="mb-24 fade-in">
+                <div class="bg-apple-lightgray rounded-3xl p-8 md:p-16 product-hover">
+                    <img src="https://s41.ax1x.com/2026/04/11/pe0aVfS.jpg" alt="哨兵节点工业渲染图" class="w-full max-w-4xl mx-auto rounded-2xl shadow-2xl">
+                </div>
+            </div>
+            <!-- 360度产品旋转展示 -->
+            <div class="mb-24 fade-in">
+                <h3 class="text-3xl font-bold text-center mb-12">全景解构·安防黑科技全维度呈现</h3>
+                <div class="bg-black rounded-3xl overflow-hidden shadow-2xl">
+                    <video 
+                        class="w-full" 
+                        muted
+                        autoplay 
+                        loop 
+                        playsinline
+                        webkit-playsinline
+                        x5-video-player-type="h5"
+                        x5-video-player-fullscreen="false"
+                        preload="auto"
+                        onerror="this.style.display='none';this.nextElementSibling.style.display='block';"
+                    >
+                        <source src="1.mp4" type="video/mp4">
+                        <div class="text-white text-center py-20">
+                            <p>视频加载失败，请检查1.mp4文件是否与html同目录上传</p>
+                        </div>
+                    </video>
+                </div>
+                <p class="text-center text-apple-gray mt-4">
+                    以全景视角重构产品认知，突破平面展示局限，实现无死角、沉浸式全维度呈现。自由视角交互，直观感知产品形态之精、结构之稳、性能之强，带来眼见为实的震撼体验，全面彰显轨上安全装备的专业品质与前沿实力 。
+                </p>
+            </div>
+            <!-- 哨兵节点 爆炸分解3D视频 -->
+            <div class="mb-24 fade-in">
+                <h3 class="text-3xl font-bold text-center mb-12">三维全息透视分解动画</h3>
+                <div class="bg-black rounded-3xl overflow-hidden shadow-2xl">
+                    <video 
+                        class="w-full" 
+                        muted
+                        autoplay 
+                        loop 
+                        playsinline
+                        webkit-playsinline
+                        x5-video-player-type="h5"
+                        x5-video-player-fullscreen="false"
+                        preload="auto"
+                        onerror="this.style.display='none';this.nextElementSibling.style.display='block';"
+                    >
+                        <source src="2.mp4" type="video/mp4">
+                        <div class="text-white text-center py-20">
+                            <p>视频加载失败，请检查2.mp4文件是否与html同目录上传</p>
+                        </div>
+                    </video>
+                </div>
+                <p class="text-center text-apple-gray mt-4">
+                    清晰呈现毫米波雷达、视觉传感器、激光雷达、AI边缘计算单元、双模通信模块、柔性光伏供电系统等关键组件结构与装配关系，直观体现多传感器融合检测、极速响应、一体化集成、极端环境适配等核心设计理念，助力理解哨兵节点高可靠、快部署、强防护的技术优势。
+                </p>
+            </div>
+            <!-- 核心特性网格 -->
+            <div class="grid md:grid-cols-2 gap-12 mb-24">
+                <div class="fade-in">
+                    <div class="bg-apple-lightgray rounded-3xl p-8 h-full">
+                        <img src="https://s41.ax1x.com/2026/04/15/peroXJP.jpg" alt="多传感器融合检测" class="w-full rounded-2xl mb-8">
+                        <h3 class="text-2xl font-bold mb-4">多传感器融合检测</h3>
+                        <p class="text-apple-gray text-lg">
+                            视觉传感器+毫米波雷达+激光雷达三重冗余验证，误报率低于0.1%， 即使在暴雨、大雾、强电磁干扰等极端环境下也能稳定工作。
+                        </p>
+                    </div>
+                </div>
+                <div class="fade-in">
+                    <div class="bg-apple-lightgray rounded-3xl p-8 h-full">
+                        <img src="https://s41.ax1x.com/2026/04/11/pe0wDzD.jpg" alt="AI边缘计算单元" class="w-full rounded-2xl mb-8">
+                        <h3 class="text-2xl font-bold mb-4">AI边缘计算单元</h3>
+                        <p class="text-apple-gray text-lg">
+                            内置高性能AI芯片，本地完成数据处理与决策，
+                            无需依赖云端，响应延迟控制在500毫秒以内，满足紧急制动需求。
+                        </p>
+                    </div>
+                </div>
+                <div class="fade-in">
+                    <div class="bg-apple-lightgray rounded-3xl p-8 h-full">
+                        <img src="https://s41.ax1x.com/2026/04/11/pe0B8b9.png" alt="5分钟快速部署" class="w-full rounded-2xl mb-8">
+                        <h3 class="text-2xl font-bold mb-4">5分钟快速部署</h3>
+                        <p class="text-apple-gray text-lg">
+                            一体化设计，无需任何基建，柔性光伏+锂电池改为 柔性光伏 + 电池包一体化集成方案，连续阴雨天气可正常工作14天，无人机空投即可完成布设。
+                        </p>
+                    </div>
+                </div>
+                <div class="fade-in">
+                    <div class="bg-apple-lightgray rounded-3xl p-8 h-full">
+                        <img src="https://s41.ax1x.com/2026/04/11/pe0wysH.png" alt="双模智能通信" class="w-full rounded-2xl mb-8">
+                        <h3 class="text-2xl font-bold mb-4">双模智能通信</h3>
+                        <p class="text-apple-gray text-lg">
+                            LoRa自组网+5G-V2X双模通信，自动切换最优链路，
+                            实现15公里超远距离传输，彻底解决隧道、山区信号盲区问题。
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- 技术规格 -->
+            <div class="fade-in">
+                <h3 class="text-3xl font-bold text-center mb-12">技术规格</h3>
+                <div class="bg-apple-lightgray rounded-3xl p-8 md:p-12">
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div>
+                            <h4 class="font-bold text-lg mb-4">检测性能</h4>
+                            <ul class="space-y-2 text-apple-gray">
+                                <li>• 最大探测距离：2.5公里</li>
+                                <li>• 目标识别准确率：≥99%</li>
+                                <li>• 误报率：<0.1%</li>
+                                <li>• 响应时间：<0.3秒</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-4">环境适应性</h4>
+                            <ul class="space-y-2 text-apple-gray">
+                                <li>• 防护等级：IP67</li>
+                                <li>• 工作温度：-40℃~70℃</li>
+                                <li>• 抗风等级：12级</li>
+                                <li>• 防水防尘：全天候</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-4">供电与续航</h4>
+                            <ul class="space-y-2 text-apple-gray">
+                                <li>• 供电方式：柔性光伏+CTP电池包</li>
+                                <li>• 续航时间：连续阴雨14天</li>
+                                <li>• 部署时间：<5分钟</li>
+                                <li>• 使用寿命：≥5年</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 安随手环产品展示 -->
+    <section id="bracelet" class="py-32 bg-apple-lightgray">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20 fade-in">
+                <h2 class="text-[clamp(2.5rem,5vw,4rem)] font-bold text-apple-darkgray mb-6">
+                    "安随"智能预警手环
+                </h2>
+                <p class="text-[clamp(1.2rem,3vw,1.5rem)] text-apple-gray max-w-2xl mx-auto text-balance">
+                    三感融合预警，贴身守护每一位作业人员的安全
+                </p>
+            </div>
+            <!-- 手环多角度展示 -->
+            <div class="grid md:grid-cols-3 gap-6 mb-24">
+                <div class="fade-in product-hover">
+                    <img src="https://s41.ax1x.com/2026/04/11/pe0dJEt.jpg" alt="安随手环正面" class="w-full rounded-3xl shadow-lg">
+                </div>
+                <div class="fade-in product-hover">
+                    <img src="https://s41.ax1x.com/2026/04/11/pe0dYUP.jpg" alt="安随手环侧面" class="w-full rounded-3xl shadow-lg">
+                </div>
+                <div class="fade-in product-hover">
+                    <img src="https://s41.ax1x.com/2026/04/11/pe0wZrj.jpg" alt="安随手环佩戴效果" class="w-full rounded-3xl shadow-lg">
+                </div>
+            </div>
+            <!-- 安随手环 360°3D展示视频 -->
+            <div class="mb-24 fade-in">
+                <h3 class="text-3xl font-bold text-center mb-12">全域臻享·穿戴黑科技全景秀</h3>
+                <div class="bg-black rounded-3xl overflow-hidden shadow-2xl">
+                    <video 
+                        class="w-full" 
+                        muted
+                        autoplay 
+                        loop 
+                        playsinline
+                        webkit-playsinline
+                        x5-video-player-type="h5"
+                        x5-video-player-fullscreen="false"
+                        preload="auto"
+                        onerror="this.style.display='none';this.nextElementSibling.style.display='block';"
+                    >
+                        <source src="3.mp4" type="video/mp4">
+                        <div class="text-white text-center py-20">
+                            <p>视频加载失败，请检查3.mp4文件是否与html同目录上传</p>
+                        </div>
+                    </video>
+                </div>
+                <p class="text-center text-apple-gray mt-4">
+                   安随智能预警手环
+三感融合预警，贴身守护作业人员安全
+触觉+听觉+视觉三重预警，精准定位，电子围栏，生命体征监测
+                </p>
+            </div>
+            <!-- 核心功能 -->
+            <div class="grid md:grid-cols-2 gap-16 items-center mb-24">
+                <div class="fade-in">
+                    <h3 class="text-3xl font-bold mb-8">三重预警，万无一失</h3>
+                    <div class="space-y-8">
+                        <div>
+                            <h4 class="text-xl font-bold mb-2 flex items-center">
+                                <i class="fa fa-hand-paper-o text-apple-blue mr-3"></i>
+                                触觉预警
+                            </h4>
+                            <p class="text-apple-gray text-lg">
+                                内置高精度线性马达，不同振动模式区分预警等级和方向，
+                                即使在嘈杂环境中也能清晰感知。
+                            </p>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-2 flex items-center">
+                                <i class="fa fa-volume-up text-apple-blue mr-3"></i>
+                                听觉预警
+                            </h4>
+                            <p class="text-apple-gray text-lg">
+                                骨传导扬声器技术，定向传递语音警报，
+                                不影响正常交流，同时保护听力。
+                            </p>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-2 flex items-center">
+                                <i class="fa fa-lightbulb-o text-apple-blue mr-3"></i>
+                                视觉预警
+                            </h4>
+                            <p class="text-apple-gray text-lg">
+                                多颗RGB LED指示灯，通过颜色和闪烁频率提示风险等级，
+                                夜间作业同样清晰可见。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="fade-in">
+                    <img src="https://s41.ax1x.com/2026/04/11/pe0wVMQ.jpg" alt="三感融合预警" class="w-full rounded-3xl shadow-lg">
+                </div>
+            </div>
+            <!-- 安随手环 爆炸分解3D视频 -->
+            <div class="mb-24 fade-in">
+                <h3 class="text-3xl font-bold text-center mb-12">三维全息透视分解动画</h3>
+                <div class="bg-black rounded-3xl overflow-hidden shadow-2xl">
+                    <video 
+                        class="w-full" 
+                        muted
+                        autoplay 
+                        loop 
+                        playsinline
+                        webkit-playsinline
+                        x5-video-player-type="h5"
+                        x5-video-player-fullscreen="false"
+                        preload="auto"
+                        onerror="this.style.display='none';this.nextElementSibling.style.display='block';"
+                    >
+                        <source src="4.mp4" type="video/mp4">
+                        <div class="text-white text-center py-20">
+                            <p>视频加载失败，请检查4.mp4文件是否与html同目录上传</p>
+                        </div>
+                    </video>
+                </div>
+                <p class="text-center text-apple-gray mt-4">
+                    安随手环内部结构LED灯、振动马达、骨传导扬声器三感融合预警：列车接近，东向，2公里
+                </p>
+            </div>
+            <!-- 附加功能 -->
+            <div class="grid md:grid-cols-4 gap-6 fade-in">
+                <div class="bg-white rounded-2xl p-6 text-center card-hover">
+                    <i class="fa fa-map-marker text-apple-blue text-3xl mb-4"></i>
+                    <h4 class="font-bold mb-2">精准定位</h4>
+                    <p class="text-apple-gray text-sm">北斗+UWB融合定位，精度0.1米</p>
+                </div>
+                <div class="bg-white rounded-2xl p-6 text-center card-hover">
+                    <i class="fa fa-shield text-apple-blue text-3xl mb-4"></i>
+                    <h4 class="font-bold mb-2">多维预警</h4>
+                    <p class="text-apple-gray text-sm">振动、语音、灯光，融合分级预警</p>
+                </div>
+                <div class="bg-white rounded-2xl p-6 text-center card-hover">
+                    <i class="fa fa-heartbeat text-apple-blue text-3xl mb-4"></i>
+                    <h4 class="font-bold mb-2">生命体征</h4>
+                    <p class="text-apple-gray text-sm">实时监测心率，异常自动报警</p>
+                </div>
+                <div class="bg-white rounded-2xl p-6 text-center card-hover">
+                    <i class="fa fa-battery-full text-apple-blue text-3xl mb-4"></i>
+                    <h4 class="font-bold mb-2">超长待机</h4>
+                    <p class="text-apple-gray text-sm">低功耗设计，待机≥30天</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 软件平台展示 -->
+    <section id="platform" class="py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20 fade-in">
+                <h2 class="text-[clamp(2.5rem,5vw,4rem)] font-bold text-apple-darkgray mb-6">
+                    全流程智能管理平台
+                </h2>
+                <p class="text-[clamp(1.2rem,3vw,1.5rem)] text-apple-gray max-w-2xl mx-auto text-balance">
+                    从设备管理到数据分析，一站式解决铁路施工安全管理难题
+                </p>
+            </div>
+            <!-- ✅ 已修复：双平台图片统一16:9比例，大小完全一致 -->
+            <div class="grid md:grid-cols-2 gap-12 mb-24">
+                <div class="fade-in">
+                    <div class="bg-apple-lightgray rounded-3xl p-8 h-full">
+                        <h3 class="text-2xl font-bold mb-6 text-center">"哨兵管家"移动端</h3>
+                        <img src="https://s41.ax1x.com/2026/04/15/per4gat.png" alt="移动端界面" class="w-full aspect-video object-cover rounded-2xl shadow-lg mx-auto">
+                        <div class="mt-8 space-y-4">
+                            <p class="text-apple-gray">• 扫码快速绑定设备，一键下发施工任务</p>
+                            <p class="text-apple-gray">• 实时查看人员位置与设备状态</p>
+                            <p class="text-apple-gray">• 预警信息即时推送，一键确认响应</p>
+                            <p class="text-apple-gray">• 在线租赁支付，自动生成数据报告</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="fade-in">
+                    <div class="bg-apple-lightgray rounded-3xl p-8 h-full">
+                        <h3 class="text-2xl font-bold mb-6 text-center">"安擎"云端管理后台</h3>
+                        <img src="https://s41.ax1x.com/2026/04/15/per4zM4.png" alt="云端后台界面" class="w-full aspect-video object-cover rounded-2xl shadow-lg mx-auto">
+                        <div class="mt-8 space-y-4">
+                            <p class="text-apple-gray">• 全局可视化监控大屏，多项目统一管理</p>
+                            <p class="text-apple-gray">• 风险热力图，识别高风险时段与路段</p>
+                            <p class="text-apple-gray">• 设备预测性维护，减少非计划停机</p>
+                            <p class="text-apple-gray">• 作业行为分析，优化安全管理流程</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 数据价值展示 -->
+            <div class="fade-in">
+                <h3 class="text-3xl font-bold text-center mb-12">数据驱动安全</h3>
+                <div class="bg-gradient-to-r from-apple-blue to-blue-500 rounded-3xl p-8 md:p-16 text-white">
+                    <div class="grid md:grid-cols-4 gap-8 text-center">
+                        <div>
+                            <p class="text-5xl font-bold mb-2">99%</p>
+                            <p class="text-xl">预警准确率</p>
+                        </div>
+                        <div>
+                            <p class="text-5xl font-bold mb-2">85%</p>
+                            <p class="text-xl">事故风险降低</p>
+                        </div>
+                        <div>
+                            <p class="text-5xl font-bold mb-2">60%</p>
+                            <p class="text-xl">管理成本降低</p>
+                        </div>
+                        <div>
+                            <p class="text-5xl font-bold mb-2">30%</p>
+                            <p class="text-xl">作业效率提升</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 产品演示视频 -->
+    <section id="video" class="py-32 bg-apple-lightgray">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20 fade-in">
+                <h2 class="text-[clamp(2.5rem,5vw,4rem)] font-bold text-apple-darkgray mb-6">
+                    产品动画演示
+                </h2>
+                <p class="text-[clamp(1.2rem,3vw,1.5rem)] text-apple-gray max-w-2xl mx-auto text-balance">
+                    真实场景实测，见证智能防护的力量
+                </p>
+            </div>
+            <div class="fade-in">
+                <div class="bg-black rounded-3xl overflow-hidden shadow-2xl">
+                    <video 
+                        class="w-full" 
+                        muted
+                        autoplay 
+                        loop 
+                        playsinline
+                        webkit-playsinline
+                        x5-video-player-type="h5"
+                        x5-video-player-fullscreen="false"
+                        preload="auto"
+                        onloadstart="this.muted=true"
+                        onplay="this.muted=true"
+                        onerror="this.style.display='none';this.nextElementSibling.style.display='block';"
+                    >
+                        <source src="5.mp4" type="video/mp4">
+                        <div class="text-white text-center py-20">
+                            <p>视频加载失败，请检查5.mp4文件是否与html同目录上传</p>
+                        </div>
+                    </video>
+                </div>
+                <p class="text-center text-apple-gray mt-4">
+                    铁路多重预警防护系统｜AI哨兵+毫米波雷达+边缘计算协同预警，0.3秒极速响应，2.5km全域感知，三重冗余抗干扰，构建轨道安全智能防线。
+                </p>
+            </div>
+        </div>
+    </section>
+    <!-- 系统优势与对比 -->
+    <section id="system" class="py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20 fade-in">
+                <h2 class="text-[clamp(2.5rem,5vw,4rem)] font-bold text-apple-darkgray mb-6">
+                    重新定义铁路安全防护
+                </h2>
+                <p class="text-[clamp(1.2rem,3vw,1.5rem)] text-apple-gray max-w-2xl mx-auto text-balance">
+                    相比传统防护手段，我们提供更智能、更可靠、更经济的解决方案
+                </p>
+            </div>
+            <!-- 对比表格 -->
+            <div class="bg-white rounded-3xl p-8 md:p-12 mb-24 fade-in overflow-x-auto shadow-lg border border-gray-200">
+                <table class="w-full">
+                    <thead>
+                        <tr class="border-b border-gray-200">
+                            <th class="text-left py-4 px-6 text-lg font-bold">对比维度</th>
+                            <th class="text-center py-4 px-6 text-lg font-bold text-apple-blue">本项目系统</th>
+                            <th class="text-center py-4 px-6 text-lg font-bold text-apple-gray">传统人工防护</th>
+                            <th class="text-center py-4 px-6 text-lg font-bold text-apple-gray">大型固定系统</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-gray-200">
+                            <td class="py-4 px-6 font-medium">预警方式</td>
+                            <td class="text-center py-4 px-6 text-apple-blue font-medium">双向主动分级预警</td>
+                            <td class="text-center py-4 px-6 text-apple-gray">单向被动人工瞭望</td>
+                            <td class="text-center py-4 px-6 text-apple-gray">单向至调度中心</td>
+                        </tr>
+                        <tr class="border-b border-gray-200">
+                            <td class="py-4 px-6 font-medium">部署时间</td>
+                            <td class="text-center py-4 px-6 text-apple-blue font-medium">5分钟</td>
+                            <td class="text-center py-4 px-6 text-apple-gray">数小时</td>
+                            <td class="text-center py-4 px-6 text-apple-gray">数月（需基建）</td>
+                        </tr>
+                        <tr class="border-b border-gray-200">
+                            <td class="py-4 px-6 font-medium">预警准确率</td>
+                            <td class="text-center py-4 px-6 text-apple-blue font-medium">≥99%</td>
+                            <td class="text-center py-4 px-6 text-apple-gray"><60%</td>
+                            <td class="text-center py-4 px-6 text-apple-gray">85%</td>
+                        </tr>
+                        <tr class="border-b border-gray-200">
+                            <td class="py-4 px-6 font-medium">初期投入</td>
+                            <td class="text-center py-4 px-6 text-apple-blue font-medium">低（租赁模式）</td>
+                            <td class="text-center py-4 px-6 text-apple-gray">高（人力成本）</td>
+                            <td class="text-center py-4 px-6 text-apple-gray">极高（百万级）</td>
+                        </tr>
+                        <tr>
+                            <td class="py-4 px-6 font-medium">长期价值</td>
+                            <td class="text-center py-4 px-6 text-apple-blue font-medium">数据增值服务</td>
+                            <td class="text-center py-4 px-6 text-apple-gray">无</td>
+                            <td class="text-center py-4 px-6 text-apple-gray">运维成本高</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- 商业模式 -->
+            <div class="fade-in">
+                <h3 class="text-3xl font-bold text-center mb-12">创新商业模式</h3>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-apple-lightgray rounded-3xl p-8 text-center card-hover">
+                        <div class="w-20 h-20 rounded-full bg-apple-blue/10 flex items-center justify-center mx-auto mb-6">
+                            <i class="fa fa-cubes text-apple-blue text-3xl"></i>
+                        </div>
+                        <h4 class="text-2xl font-bold mb-4">硬件租赁 RaaS</h4>
+                        <p class="text-apple-gray text-lg">
+                            按项目周期租赁设备，无需大额一次性投入，
+                            降低客户门槛，快速打开市场。
+                        </p>
+                    </div>
+                    <div class="bg-apple-lightgray rounded-3xl p-8 text-center card-hover">
+                        <div class="w-20 h-20 rounded-full bg-apple-blue/10 flex items-center justify-center mx-auto mb-6">
+                            <i class="fa fa-cloud text-apple-blue text-3xl"></i>
+                        </div>
+                        <h4 class="text-2xl font-bold mb-4">软件订阅 SaaS</h4>
+                        <p class="text-apple-gray text-lg">
+                            按年收取平台使用费，提供持续的软件升级与技术支持，
+                           形成稳定的现金流。
+                        </p>
+                    </div>
+                    <div class="bg-apple-lightgray rounded-3xl p-8 text-center card-hover">
+                        <div class="w-20 h-20 rounded-full bg-apple-blue/10 flex items-center justify-center mx-auto mb-6">
+                            <i class="fa fa-database text-apple-blue text-3xl"></i>
+                        </div>
+                        <h4 class="text-2xl font-bold mb-4">数据增值 DaaS</h4>
+                        <p class="text-apple-gray text-lg">
+                            提供定制化安全报告、风险评估与培训服务，
+                            挖掘数据价值，提升客户粘性。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 未来规划 -->
+    <section id="future" class="py-32 bg-apple-lightgray">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20 fade-in">
+                <h2 class="text-[clamp(2.5rem,5vw,4rem)] font-bold text-apple-darkgray mb-6">
+                    未来发展蓝图
+                </h2>
+                <p class="text-[clamp(1.2rem,3vw,1.5rem)] text-apple-gray max-w-2xl mx-auto text-balance">
+                    从铁路安全到全工业安全，构建通用主动安全防御体系
+                </p>
+            </div>
+            <!-- 时间轴 -->
+            <div class="relative max-w-4xl mx-auto">
+                <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-apple-blue/20"></div>
+                
+                <div class="mb-24 relative fade-in">
+                    <div class="flex items-center">
+                        <div class="w-1/2 pr-12 text-right">
+                            <h3 class="text-2xl font-bold text-apple-blue mb-2">2026-2027</h3>
+                            <h4 class="text-xl font-bold mb-4">产品定型与首批落地</h4>
+                            <p class="text-apple-gray">
+                                完成产品量产与CRCC认证，打造河北4个标杆工务段，
+                                验证产品可行性与商业模式。
+                            </p>
+                        </div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-apple-blue border-4 border-white shadow-lg"></div>
+                        <div class="w-1/2 pl-12"></div>
+                    </div>
+                </div>
+                <div class="mb-24 relative fade-in">
+                    <div class="flex items-center">
+                        <div class="w-1/2 pr-12"></div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-apple-blue border-4 border-white shadow-lg"></div>
+                        <div class="w-1/2 pl-12 text-left">
+                            <h3 class="text-2xl font-bold text-apple-blue mb-2">2027-2028</h3>
+                            <h4 class="text-xl font-bold mb-4">区域复制与规模扩张</h4>
+                            <p class="text-apple-gray">
+                                覆盖京津冀15个工务段，建立可复制的交付与运维模式，
+                                实现收支平衡，达到盈亏平衡点。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-24 relative fade-in">
+                    <div class="flex items-center">
+                        <div class="w-1/2 pr-12 text-right">
+                            <h3 class="text-2xl font-bold text-apple-blue mb-2">2028-2029</h3>
+                            <h4 class="text-xl font-bold mb-4">模式验证与生态延伸</h4>
+                            <p class="text-apple-gray">
+                                验证"硬件租赁+数据服务"双轮模式，拓展电务、供电段场景，
+                                实现全年盈利，客户续约率≥85%。
+                            </p>
+                        </div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-apple-blue border-4 border-white shadow-lg"></div>
+                        <div class="w-1/2 pl-12"></div>
+                    </div>
+                </div>
+                <div class="relative fade-in">
+                    <div class="flex items-center">
+                        <div class="w-1/2 pr-12"></div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-apple-blue border-4 border-white shadow-lg"></div>
+                        <div class="w-1/2 pl-12 text-left">
+                            <h3 class="text-2xl font-bold text-apple-blue mb-2">2029-2035</h3>
+                            <h4 class="text-xl font-bold mb-4">跨域融合与全场景安全</h4>
+                            <p class="text-apple-gray">
+                                进入地铁、港口、矿山等高危行业，构建通用主动安全防御体系，
+                                成为工业安全领域的标杆企业。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 团队介绍 -->
+    <section class="py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-[clamp(2.5rem,5vw,4rem)] font-bold text-apple-darkgray mb-6">
+                    专家顾问
+                </h2>
+                <p class="text-[clamp(1.2rem,3vw,1.5rem)] text-apple-gray max-w-2xl mx-auto text-balance">
+                    河北轨道运输职业技术学院 · 智轨安联科创团队
+                </p>
+            </div>
+            <div class="grid md:grid-cols-4 gap-8 fade-in">
+                <div class="bg-apple-lightgray rounded-3xl p-8 text-center card-hover">
+                    <img src="https://s41.ax1x.com/2026/04/11/pe0GclR.jpg" alt="贾永兴" class="w-32 h-32 rounded-full mx-auto mb-6 object-cover">
+                    <h4 class="text-xl font-bold mb-2">贾永兴</h4>
+                    <p class="text-apple-gray mb-4">列车空气动力学</p>
+                    <p class="text-apple-gray text-sm">
+                        列车空气动力学研究优化列车识别抗干扰能力，
+                        保障低时延高可靠，项目工程应用价值高。
+                    </p>
+                </div>
+                <div class="bg-apple-lightgray rounded-3xl p-8 text-center card-hover">
+                    <img src="https://s41.ax1x.com/2026/04/11/pe0G6p9.jpg" alt="何毅" class="w-32 h-32 rounded-full mx-auto mb-6 object-cover">
+                    <h4 class="text-xl font-bold mb-2">何毅</h4>
+                    <p class="text-apple-gray mb-4">Insar地表形变时空智能预测</p>
+                    <p class="text-apple-gray text-sm">
+                        InSAR地表形变预测可提升系统环境感知与预警精度，
+                        为铁路安全防护提供可靠算法支撑，项目可行。
+                    </p>
+                </div>
+                <div class="bg-apple-lightgray rounded-3xl p-8 text-center card-hover">
+                    <img src="https://s41.ax1x.com/2026/04/11/pe0GsfJ.jpg" alt="孙小伟" class="w-32 h-32 rounded-full mx-auto mb-6 object-cover">
+                    <h4 class="text-xl font-bold mb-2">孙小伟</h4>
+                    <p class="text-apple-gray mb-4">轨道交通振动噪声控制</p>
+                    <p class="text-apple-gray text-sm">
+                        轨道交通振动与装备技术适配系统硬件部署，
+                        提升耐用性与运维稳定性，项目落地性强。
+                    </p>
+                </div>
+                <div class="bg-apple-lightgray rounded-3xl p-8 text-center card-hover">
+                    <img src="https://s41.ax1x.com/2026/04/11/pe0Y6qx.jpg" alt="周亮" class="w-32 h-32 rounded-full mx-auto mb-6 object-cover">
+                    <h4 class="text-xl font-bold mb-2">周亮</h4>
+                    <p class="text-apple-gray mb-4">测绘与地理信息</p>
+                    <p class="text-apple-gray text-sm">
+                        项目紧扣测绘地理信息领域应用，思路清晰、
+                        方法可行，具有较强实践价值。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 结尾页 -->
+    <section class="py-32 text-center bg-apple-lightgray">
+        <div class="max-w-4xl mx-auto px-4 fade-in">
+            <h2 class="text-[clamp(2.5rem,5vw,4rem)] font-bold text-apple-darkgray mb-8">
+                用科技守护每一个劳动者的安全
+            </h2>
+            <p class="text-xl text-apple-gray mb-12">
+                河北轨道运输职业技术学院 · 智轨安联科创团队
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#video" class="px-8 py-3 bg-apple-blue text-white rounded-full text-lg font-medium hover:bg-blue-600 transition">
+                    观看演示
+                </a>
+                <a href="#sentinel" class="px-8 py-3 bg-white text-apple-darkgray rounded-full text-lg font-medium hover:bg-gray-100 transition">
+                    了解产品
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- 统一主题、完全居中 苹果风页脚 -->
+    <footer class="py-10 bg-white border-t border-gray-200 text-center">
+        <div class="max-w-7xl mx-auto px-4">
+            <p class="text-apple-gray text-sm mb-2">本产品由河北轨道运输职业技术学院智轨安联科创团队研发，专注于铁路施工安全智能防护领域。我们致力于用先进的人工智能与物联网技术，为铁路行业提供更安全、更高效、更经济的安全防护解决方案。</p>
+            <p class="text-apple-gray text-sm mb-4">河北轨道运输职业技术学院 · 智轨安联科创团队</p>
+            <p class="text-apple-gray text-xs">Copyright © 2026 智轨安联科创团队.版权所有</p>
+        </div>
+    </footer>
+    <!-- 返回顶部按钮 -->
+    <button id="backToTop" class="fixed bottom-8 right-8 w-14 h-14 rounded-full bg-apple-blue text-white flex items-center justify-center shadow-lg opacity-0 transition-opacity duration-300 z-50">
+        <i class="fa fa-chevron-up text-xl"></i>
+    </button>
+    <script>
+        // 移动端菜单控制
+        const menuBtn = document.getElementById('menuBtn');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mask = document.getElementById('mask');
+        const menuLinks = document.querySelectorAll('.menu-link');
+        function openMenu() {
+            mobileMenu.classList.remove('menu-close');
+            mobileMenu.classList.add('menu-open');
+            mask.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeMenu() {
+            mobileMenu.classList.remove('menu-open');
+            mobileMenu.classList.add('menu-close');
+            mask.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+        menuBtn.addEventListener('click', openMenu);
+        closeMenuBtn.addEventListener('click', closeMenu);
+        mask.addEventListener('click', closeMenu);
+        menuLinks.forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+        // 返回顶部按钮
+        const backToTopBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTopBtn.classList.remove('opacity-0');
+                backToTopBtn.classList.add('opacity-100');
+            } else {
+                backToTopBtn.classList.remove('opacity-100');
+                backToTopBtn.classList.add('opacity-0');
+            }
+        });
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        // 滚动淡入效果 兼容优化
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+        // 平滑滚动导航
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        // 强制视频静音 确保移动端自动播放
+        document.querySelectorAll('video').forEach(video => {
+            video.muted = true;
+            video.addEventListener('canplay', () => {
+                video.play().catch(err => console.log('视频自动播放受限:', err));
+            });
+        });
+    </script>
+</body>
+</html>
